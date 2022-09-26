@@ -31,3 +31,9 @@ omg now we made a code block
 This a so cool
 and exciting
 ```
+**These edits were made on VS Code**
+
+```
+more edits
+from VS code
+```
