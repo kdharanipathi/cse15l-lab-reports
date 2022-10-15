@@ -16,6 +16,10 @@ Here is the link to install the software: [VS Code](https://code.visualstudio.co
 
 Next we want to log in remotely. To do this we need to log into out CSE specfic account. If you are using Windows you need to install a program call OpenSHH, but since we are working on Mac we will not be installing that account. Next we are going back to VS code to connect the remote computer. 
 
+Here is the link to install OpenSHH: [OpenSHH](https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse?tabs=gui)
+
+(Here I have fixed my lab report and added a link to OpenSHH)
+
 We have to first open the terminal and type in our email after shh. This is what it should look like. 
 
 `$ ssh cs15lfa22zz@ieng6.ucsd.edu`  
@@ -87,16 +91,26 @@ Our solution to not have to always copy and paste is SHH keygen.
 
 Run this out your computer `ssh-keygen`
 
-![Image](shhkeys2.png)
+![Image](newshhkeys.png)
+(I have edited my previous shh-keygen and have now fixed it so I scp the key-gen I created in my local to my remote computer. )
 
 By the end of this you should be able to ssh or scp from this client to the server without entering your password.
 
 
 ## Step 6: Optimizing Remote Running
+(I have fixed this part of my lab report by writing more information and including a screenshot as well)
 
 You can now finally making a local edit to WhereAmI.java, then copying it to the remote server and running it.
 
-YAY!!
+Do you want to make you life even eaisier. You can also write a command in quotes at the end of an ssh command to directly run it on the remote server, then exit.
+
+You can see me do it below with "ls".
+
+You can also use a semicolon to seperate commands allowing you to run multiple commands on the same line. That's just too good at this point. In my screenshot below you can see me do both.
+
+![Image](optimize.png)
+
+Now you are finally done! YAY!!
 
 
 
