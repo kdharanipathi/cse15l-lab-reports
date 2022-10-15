@@ -2,6 +2,8 @@
 
 ## Search Engine
 
+
+
 ```
 import java.io.IOException;
 import java.net.URI;
@@ -65,11 +67,27 @@ class SearchEngine {
 }
 ```
 
-The first thing you want to do when do this is go the VS code website and download the app. Be 
-sure to pick the right operating system based on the computer you are working on. 
 
-Here is the link to install the software: [VS Code](https://code.visualstudio.com/download)
+**Welcome Page**
 
-**Here is what it looks like on Mac after downloading.**
+![Image](sewelcome.png)
 
-![Image](downloadvscode.png)
+
+This called the welcome page. The code below shows where it was called
+
+```
+if (url.getPath().equals("/")) {
+
+            return String.format("Welcome to my Search Engine. Please Type!");
+```
+![Image](seapple.png)
+
+This added apple to our data of the string that were searched. The code below shows the method.
+
+```
+if (url.getPath().equals("/")) {
+
+            return String.format("Welcome to my Search Engine. Please Type!");
+```
+
+![Image](sefind.png)
