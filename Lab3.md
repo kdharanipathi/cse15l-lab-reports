@@ -129,7 +129,7 @@ For search, it first searches and checks if that path contains "/search" and if 
 
 There was a failure with ReverseInPlace so I created a test to check if it was working properly and this is the test that I wrote.
 
-![Image](LAB3SC/part2/test1array.png)
+![Image](LAB3SC/test1array.png)
 
 I found that the test failed and the method was infact not working properly.
 
@@ -137,13 +137,13 @@ I found that the test failed and the method was infact not working properly.
 
 The ouptut was wrong at index 1. It should hace been 1 but instead it was 2. Here was what Junit showed as the error.
 
-![Image](LAB3SC/part2/testarrayoutput.png)
+![Image](LAB3SC/testarrayoutput.png)
 
 **Bug** 
 
 I then fixed the code so that it would reverse the code in place the right way.
 
-![Image](LAB3SC/part2/arrayfixed.png)
+![Image](LAB3SC/arrayfixed.png)
 
 **Why**
 
@@ -155,8 +155,8 @@ The reason the code didn't work the first time and caused an error is because wh
 
 There was a failure with filter so I created a test to check if it was working properly. Before writing the test I made a class that implements StringChecker so I have some condition that filter will check for. I made it so it checks if the length of the string is greater than 3 and return true if it is. Here is the class and test I wrote.
 
-![Image](LAB3SC/part2/checkname.png)
-![Image](LAB3SC/part2/test2list.png)
+![Image](LAB3SC/checkname.png)
+![Image](LAB3SC/test2list.png)
 
 I found that the test failed and filter was infact not working properly.
 
@@ -164,13 +164,13 @@ I found that the test failed and filter was infact not working properly.
 
 The output didn't match because it showed up in the wrong order. Money was were dogs should be and vise versa. Here was what Junit showed as the error.
 
-![Image](LAB3SC/part2/junit2.ong.png)
+![Image](LAB3SC/junit2.ong.png)
 
 **Bug** 
 
 I then fixed the code so that it would return it in the right order.
 
-![Image](LAB3SC/part2/fixedlist.png)
+![Image](LAB3SC/fixedlist.png)
 
 **Why**
 
