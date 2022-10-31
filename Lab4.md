@@ -65,3 +65,20 @@ The last thing that I did with grep is look for the word "descriptively" in all 
 
 ## Less
 
+```
+krutidharanipathi@Krutis-MBP biomed % less 1471-2164-3-13.txt 1471-2164-3-15.txt
+```
+
+Using this less command I found these 2 files and showed the output of everything that is in these two files and was able to navigate between these to files. 
+
+```
+n p
+```
+
+Once the files pops up I can use n and p to navigate between the 2 files. Where n is next and p is previous
+
+```
+q
+```
+
+I then used the q key to quit and exit out of the file that I am on. This brought me back to the terminal.
