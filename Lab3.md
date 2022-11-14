@@ -1,177 +1,124 @@
-# Lab Report 2
+# Researching Commands (FIND)
 
-## Search Engine
-
-```
-import java.io.IOException;
-import java.net.URI;
-import java.util.ArrayList;
-
-
-class Handler implements URLHandler {
-    // The one bit of state on the server: a number that will be manipulated by
-    // various requests.
-    int num = 0;
-    ArrayList<String> allStrings = new ArrayList<String>();
-
-    public String handleRequest(URI url) {
-        String error = "404 Not Found!";
-
-        if (url.getPath().equals("/")) {
-
-            return String.format("Welcome to my Search Engine. Please Type!");
-
-        } else if (url.getPath().contains("/add")) {
-            String[] parameters = url.getQuery().split("=");
-            if (parameters[0].equals("s")) {
-                allStrings.add(parameters[1]);
-                return String.format("You have now added " + parameters[1]);
-            }
-            else{
-                return error;
-            }
-    
-        } else if (url.getPath().contains("/search")){
-            String[] parameters = url.getQuery().split("=");
-            String foundItems = "";
-            if (parameters[0].equals("s")) {
-                for ( int i = 0; i < allStrings.size(); i++){
-                    if (allStrings.get(i).contains(parameters[1])){
-                        foundItems = foundItems + allStrings.get(i) + "\n";
-                    }
-                }
-                return String.format("I have found " + foundItems);
-            }
-            else{
-                return error;
-            }
-        }
-        return error;
-    }
-}
-
-
-class SearchEngine {
-    public static void main(String[] args) throws IOException {
-        if(args.length == 0){
-            System.out.println("Missing port number! Try any number between 1024 to 49151");
-            return;
-        }
-
-        int port = Integer.parseInt(args[0]);
-
-        Server.start(port, new Handler());
-    }
-}
-```
-
-
-**Welcome Page**
-
-![Image](Lab3SC/sewelcome.png)
-
-
-This called the welcome page. The code below shows where it was called
+## -type
 
 ```
-if (url.getPath().equals("/")) {
-
-            return String.format("Welcome to my Search Engine. Please Type!");
+krutidharanipathi@Krutis-MBP docsearch % cd technical 
+krutidharanipathi@Krutis-MBP technical % touch new_1.txt  
+krutidharanipathi@Krutis-MBP technical % find . -type f -mmin -2
+./new_1.txt
 ```
-This one has no paramters it is checking. If the path eqauls "/" then it will just return the statement from above. 
-
-**Adding String**
-
-![Image](Lab3SC/seapple.png)
-
-This added apple to our data of the string that were searched. The code below shows the method.
+I first created a text file called new_1.txt in technical. I then used find . -type f -mmin -2 to check what files where created in the last 2 minutes and " ./new_1.txt " was the output.
 
 ```
-else if (url.getPath().contains("/add")) {
-            String[] parameters = url.getQuery().split("=");
-            if (parameters[0].equals("s")) {
-                allStrings.add(parameters[1]);
-                return String.format("You have now added " + parameters[1]);
-            }
-            else{
-                return error;
-            }
+krutidharanipathi@Krutis-MBP technical % find .  -type f -amin -10
+./new_1.txt
+krutidharanipathi@Krutis-MBP technical % find .  -type f -amin -10
+./new_1.txt
+./911report/chapter-2.txt
 ```
-For add, when it sees that it contains "/add" it then splits it into an array of strings at "=". It then checks if the first string in the array at index 0 is "s", and if it is, it will add the next index of the array into the ArrayList that keeps track of all the strings being added. For example, in this instance, the parameters array is {"s" , "apple"}. We can see that "s" is in index 0 and "apple" is in index 1. We then add what is in index one (apple) to allStrings. If a different word, such as pineapple, was being added, then the parameters would look like
-{"s" , "pineapple"} instead. Then pineapple would be in index 1 and would be added to allStrings. It then returns the output saying what we have now added.
-
-
-
-**Find SubString**
-
-![Image](Lab3SC/sefind.png)
+I wanted to try another one with time specfically access time to see what happens. To do this I first checked what the output was before I changes a file and the only output I got was the file I recently created. I then changed " ./911report/chapter-2.txt " by adding a random space. I then ran amin again and got an output of both " ./new_1.txt " and " ./911report/chapter-2.txt ". 
 
 ```
-else if (url.getPath().contains("/search")){
-            String[] parameters = url.getQuery().split("=");
-            String foundItems = "";
-            if (parameters[0].equals("s")) {
-                for ( int i = 0; i < allStrings.size(); i++){
-                    if (allStrings.get(i).contains(parameters[1])){
-                        foundItems = foundItems + allStrings.get(i) + "\n";
-                    }
-                }
-                return String.format("I have found " + foundItems);
-            }
+krutidharanipathi@Krutis-MacBook-Pro technical % find . -type d
+.
+./government
+./government/About_LSC
+./government/Env_Prot_Agen
+./government/Alcohol_Problems
+./government/Gen_Account_Office
+./government/Post_Rate_Comm
+./government/Media
+./plos
+./biomed
+./911report
 ```
-For search, it first searches and checks if that path contains "/search" and if it does, then it continues on with the rest of the code. Then like with add, it creates an array of strings called parameters and splits at "=". We also create a new empty string called foundItems, where we will add all the items we find containing the substring we are searching for. With search, the second parameter at index 1 is the substring we are searching for. So in this situtaiton the paramters would be {"s" , "app"}. We will then search through the ArrayList of all the strings that have been added, looking to see if any of them contain parameters index 1 (which is app). When we find something that contains "app" it is then added to foundItems, which will then at the end be returned showing all the strings that contain app. If we wanted to search for something else, we would change what is after the equal sign. This would lead to a new parameters for example 
-{"s", "pine"}. 
+
+I wanted to find all the files in the current directory that I am in. The directory that I am in is techincal so I would find all the files in technical. I used "find . -type d" to do this. The output I got is printed above.
 
 
-## Array
+## -size
 
-**The failure-inducing input** 
+```
+krutidharanipathi@Krutis-MBP technical % find . -size +200k
+./government/About_LSC/commission_report.txt
+./government/Env_Prot_Agen/bill.txt
+./government/Gen_Account_Office/GovernmentAuditingStandards_yb2002ed.txt
+./government/Gen_Account_Office/Statements_Feb28-1997_volume.txt
+./government/Gen_Account_Office/d01591sp.txt
+./911report/chapter-13.4.txt
+./911report/chapter-13.5.txt
+./911report/chapter-3.txt
+```
 
-There was a failure with ReverseInPlace so I created a test to check if it was working properly and this is the test that I wrote.
+One command that I tried with find is size. I wanted to find the files that are greater than 200 kilobytes in size and I searched for those. the +200k is the more then 200 kilobytes that we are searching for. This is the output that I got. 
 
-![Image](Lab3SC/test1array.png)
+```
+krutidharanipathi@Krutis-MacBook-Pro technical % find . -size -1k
+.
+./government
+./government/About_LSC
+./government/Env_Prot_Agen
+./government/Alcohol_Problems
+./government/Post_Rate_Comm
+./plos/pmed.0020191.txt
+./plos/pmed.0020226.txt
+./new_1.txt
+./911report
+```
 
-I found that the test failed and the method was infact not working properly.
+I can also search for files that are less than a size instead of only a size greater like I did above. I used the -1k to find all the files that are less than 1 kilobyte in size. I then got an output with a list of files that are less than that size. 
 
-**Symptom** 
+```
+krutidharanipathi@Krutis-MacBook-Pro technical % find . -type f -exec ls -s {} + | sort -n -r | head -3
+600 ./government/Gen_Account_Office/Statements_Feb28-1997_volume.txt
+592 ./government/Gen_Account_Office/d01591sp.txt
+576 ./911report/chapter-13.5.txt
+```
+I then used the -size command-line option to find the 3 largest files in the directory that I am currently in. It then gives the output of these 3 files recursively so I can see what the 3 largest files in the directory are. This is the output that I got.
 
-The ouptut was wrong at index 1. It should hace been 1 but instead it was 2. Here was what Junit showed as the error.
+## -name
 
-![Image](Lab3SC/testarrayoutput.png)
+```
+krutidharanipathi@Krutis-MacBook-Pro docsearch % find ./technical -name chapter-1.txt 
+./technical/911report/chapter-1.txt
+```
+I was in the doc search directory and I wanted to find where where chapter-1.txt would be. By using "find ./technical -name chapter-1.txt " I was able to locate the file.
 
-**Bug** 
 
-I then fixed the code so that it would reverse the code in place the right way.
+```
+krutidharanipathi@Krutis-MacBook-Pro docsearch % find ./ -type f -name "*.txt" -exec grep 'synergistically'  {} \;
+        mastery of facts, and we enter an era of medical practice that will develop synergistically
+        across species [17,20,21] and stimulated synergistically by both IL-6 and IL-1β [22–25].
+        differentiation and between GA and ABA in germination. Other processes are synergistically
+        ERF1 expression, and treatment with both hormones synergistically
+        with MEF2 to synergistically activate selective ST muscle genes and also serves as a target
+          lipopolysaccharide (LPS)) that acts synergistically with
+        synergistically increases PH-20-mediated inhibition of
+        and WOX1 mediate apoptosis synergistically. Overexpressed
+        Progesterone interacts synergistically with estrogen in
+        synergistically, suggesting Gleevec can potentiate the
+          Gleevec and cisplatin synergistically inhibited the
+          synergistically with cisplatin. Cisplatin causes two
+          with NF-κB, resulting in a complex that synergistically
+          synergistically to transactivate the reporter construct
+        these two ligands affect virus infectivity synergistically
+          1and 2, Fig. 3). CAP and sCD4 synergistically inhibited
+        sites on HIV-1 and acting synergistically.
+          but interacted synergistically with it [ 12 ] . These
+        synergistically or cooperatively. The latter may either
+          1 is synergistically influenced by α 
+          synergistically with a primary defect (either nuclear or
+        Stat3 can act synergistically with other coactivators to
+        synergistically with other c oactivators to stimulate SHRs
+```
 
-![Image](Lab3SC/arrayfixed.png)
+I wanted to find all the txt files that contained the word "synergistically". I printed out all the lines from these files that contian the word. I combined grep and find to find it and also used type along with name to find these files. I used the command " find ./ -type f -name "*.txt" -exec grep 'synergistically'  {} \;" I found all of these lines and they were shown as an output. 
 
-**Why**
-
-The reason the code didn't work the first time and caused an error is because whenever it switching the values the original value that was in the index would have already been replaced so it was switching with the already switched values and that lead to an incorrect array. I fixed this in my new code by creating a temp varible thet stores it so it doesn't go away forvere when we are reversing the array. 
-
-## List
-
-**The failure-inducing input** 
-
-There was a failure with filter so I created a test to check if it was working properly. Before writing the test I made a class that implements StringChecker so I have some condition that filter will check for. I made it so it checks if the length of the string is greater than 3 and return true if it is. Here is the class and test I wrote.
-
-![Image](Lab3SC/checkname.png)
-![Image](Lab3SC/test2list.png)
-
-I found that the test failed and filter was infact not working properly.
-
-**Symptom** 
-
-The output didn't match because it showed up in the wrong order. Money was were dogs should be and vise versa. Here was what Junit showed as the error.
-
-![Image](Lab3SC/junit2.ong.png)
-
-**Bug** 
-
-I then fixed the code so that it would return it in the right order.
-
-![Image](Lab3SC/fixedlist.png)
-
-**Why**
-
-The reason the code didn't work the first time and caused an error is because it keeps adding to elemts to the front of list and that would return the opposite of the expected output because it would be returning in the order reverse that it should return in. It would give us the right elements in the ouptut but they would be be in the worng order. In my example you can see money and dogs were returned but they weren't in the right order. I fixed this by changing the add to be at the end instead of the front.
+```
+krutidharanipathi@Krutis-MacBook-Pro docsearch % cd technical                                                     
+krutidharanipathi@Krutis-MacBook-Pro technical % cd government                                                                 
+krutidharanipathi@Krutis-MacBook-Pro government % find ./Alcohol_Problems -name Session2-PDF.txt -exec rm -i {} \;
+remove ./Alcohol_Problems/Session2-PDF.txt? y
+```
+I wanted to remove the file Session2-PDF.txt so I used the command above to do so. I first cd into the correct directory with was government. From there I used "find ./Alcohol_Problems -name Session2-PDF.txt -exec rm -i {} \;" to remove the file. It then asked me if I was sure I wanted to remove it and I typed y which removed the file from the directory
