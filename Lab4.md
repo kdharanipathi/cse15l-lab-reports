@@ -7,6 +7,29 @@ I choose to do the option where I changed the name of the start parameter and it
 ```
 / s t a r t <Enter> c e b a s e <Esc> n . n . : w q <Enter>
 ```
+![Image](Lab4SC/sc1.png)
+I first typed in vim DocSearchServer.java to the terminal and this is what showed up.
+
+![Image](Lab4SC/2.png)
+I then typed in \start which found the first time the word start appears in the code.
+
+![Image](Lab4SC/3.png)
+When I pressed enter after typing in \start it the terminal it jumped the cursor to start on the first letter which is se
+
+![Image](Lab4SC/4.png)
+I then did ce which selected the whole word deleted it (to replace) and entered insert mode
+
+![Image](Lab4SC/5.png)
+In insert mode I then typed in base as the word to replace start and then pressed `<Esc>` to exit out of inset mode.
+
+![Image](Lab4SC/6.png)
+I then did n which took me to the start of next time the word start appears in the code. 
+
+![Image](Lab4SC/7.png)
+By pressing . after the n I was able to replace the word start with base. I then did it again to replace the third occurrence of the word start.
+
+![Image](Lab4SC/8.png)
+I then do :wq  to exit out of vim and save the code.
 
 ## Part 2
 
